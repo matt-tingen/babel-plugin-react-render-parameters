@@ -4,15 +4,17 @@ const defaults = {
 
 export default function({ types: t }) {
   return {
+    pre(state) {
+      this.opts = Object.assign({}, defaults, state.opts);
+    },
     visitor: {
       ClassMethod(path, state) {
         if (path.node.key.name !== 'render') {
           return;
         }
 
-        const superClasses = state.opts.superClasses || defaults.superClasses;
         const cls = path.findParent(path => path.isClassDeclaration());
-        if (!superClasses.includes(cls.node.superClass.name)) {
+        if (!this.opts.superClasses.includes(cls.node.superClass.name)) {
           return;
         }
 
