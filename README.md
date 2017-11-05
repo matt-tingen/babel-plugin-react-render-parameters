@@ -1,4 +1,4 @@
-# babel-plugin-transform-react-render-parameters
+# babel-plugin-react-render-parameters
 
 Allow props and state as render() parameters
 
@@ -30,7 +30,7 @@ class Test extends Component {
 ## Installation
 
 ```sh
-$ npm install --dev babel-plugin-transform-react-render-parameters
+$ npm install --dev babel-plugin-react-render-parameters
 ```
 
 ## Usage
@@ -39,6 +39,6 @@ $ npm install --dev babel-plugin-transform-react-render-parameters
 
 ```json
 {
-  "plugins": ["transform-react-render-parameters"]
+  "plugins": ["react-render-parameters"]
 }
 ```
