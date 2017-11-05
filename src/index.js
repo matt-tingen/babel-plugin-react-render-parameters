@@ -1,8 +1,18 @@
+const defaults = {
+  superClasses: ['Component', 'PureComponent']
+};
+
 export default function({ types: t }) {
   return {
     visitor: {
       ClassMethod(path, state) {
         if (path.node.key.name !== 'render') {
+          return;
+        }
+
+        const superClasses = state.opts.superClasses || defaults.superClasses;
+        const cls = path.findParent(path => path.isClassDeclaration());
+        if (!superClasses.includes(cls.node.superClass.name)) {
           return;
         }
 
