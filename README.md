@@ -1,6 +1,6 @@
 # babel-plugin-react-render-parameters
 
-Allow props and state as render() parameters
+Allow props and state as render() parameters, as in preact.
 
 ## Example
 
@@ -42,3 +42,19 @@ $ npm install --dev babel-plugin-react-render-parameters
   "plugins": ["react-render-parameters"]
 }
 ```
+
+The `render` method will be changed for classes with `Component` or `PureComponent` as their superclass by default. To change this, add the `superClass` option:
+
+```json
+{
+  "plugins": [
+    ["react-render-parameters", {
+      "superClass": ["Component", "MyBaseComponent"]
+    }]
+  ]
+}
+```
+
+## Limitations
+
+This plugin currently only supports class methods defined within the `class` syntax. As a result, it won't work with `React.createClass()`. If you are using a plugin which transforms the `class` syntax, this plugin needs to come before that one in the `plugins` array. This plugin will work fine if the other plugin is part of a preset, as well.
