@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-render-parameters",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Allow props and state as render() parameters, as in preact",
   "repository": "matt-tingen/babel-plugin-react-render-parameters",
   "author": "Matt Tingen <matt.tingen@gmail.com>",
