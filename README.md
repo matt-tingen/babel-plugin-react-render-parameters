@@ -7,45 +7,38 @@ Allow props and state as render() parameters
 **In**
 
 ```js
-// input code
+class Test extends Component {
+  render(props, { a, b }) {
+    return <div />;
+  }
+}
 ```
 
 **Out**
 
 ```js
-"use strict";
+class Test extends Component {
+  render() {
+    const props = this.props,
+          { a, b } = this.state;
 
-// output code
+    return <div />;
+  }
+}
 ```
 
 ## Installation
 
 ```sh
-$ npm install babel-plugin-transform-react-render-parameters
+$ npm install --dev babel-plugin-transform-react-render-parameters
 ```
 
 ## Usage
-
-### Via `.babelrc` (Recommended)
 
 **.babelrc**
 
 ```json
 {
-  "plugins": ["babel-plugin-transform-react-render-parameters"]
+  "plugins": ["transform-react-render-parameters"]
 }
-```
-
-### Via CLI
-
-```sh
-$ babel --plugins babel-plugin-transform-react-render-parameters script.js
-```
-
-### Via Node API
-
-```javascript
-require("babel-core").transform("code", {
-  plugins: ["babel-plugin-transform-react-render-parameters"]
-});
 ```
