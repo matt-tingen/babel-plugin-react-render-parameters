@@ -2,6 +2,8 @@ const defaults = {
   superClasses: ['Component', 'PureComponent']
 };
 
+const paramNames = ['props', 'state', 'context'];
+
 export default function({ types: t }) {
   return {
     pre(state) {
@@ -21,7 +23,6 @@ export default function({ types: t }) {
               return;
             }
 
-            const paramNames = ['props', 'state'];
             const params = path.get('params').slice(0, paramNames.length);
             const body = path.get('body');
 

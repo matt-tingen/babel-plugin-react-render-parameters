@@ -8,7 +8,7 @@ Allow props and state as render() parameters, as in preact.
 
 ```js
 class Test extends Component {
-  render(props, { a, b }) {
+  render(props, { a, b }, ctx) {
     return <div />;
   }
 }
@@ -20,7 +20,8 @@ class Test extends Component {
 class Test extends Component {
   render() {
     const props = this.props,
-          { a, b } = this.state;
+          { a, b } = this.state,
+          ctx = this.context;
 
     return <div />;
   }
