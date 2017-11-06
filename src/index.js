@@ -6,18 +6,15 @@ const paramNames = ['props', 'state', 'context'];
 
 export default function({ types: t }) {
   return {
-    pre(state) {
-      this.opts = Object.assign({}, defaults, state.opts);
-    },
     visitor: {
-      Program(path) {
-        const { opts } = this;
+      Program(path, state) {
         path.traverse({
           ClassMethod(path) {
             if (path.node.key.name !== 'render') {
               return;
             }
 
+            const opts = { ...defaults, ...state.opts };
             const cls = path.findParent(path => path.isClassDeclaration());
             if (!opts.superClasses.includes(cls.node.superClass.name)) {
               return;

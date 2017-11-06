@@ -1,7 +1,5 @@
 {
   "plugins": [
-    ["../../../src", {
-      "superClasses": ["MyBaseComponent"]
-    }]
+    ["../../../src"]
   ]
 }
