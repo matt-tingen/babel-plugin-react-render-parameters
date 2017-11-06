@@ -26,16 +26,16 @@ export default function({ types: t }) {
             }
 
             const body = path.get('body');
-            const declarators = params.map((param, i) => {
-              const name = paramNames[i];
-              return t.variableDeclarator(
-                param.node,
-                t.memberExpression(t.thisExpression(), t.identifier(name))
-              );
-            });
+            const declarators = params.map((param, i) => t.variableDeclarator(
+              param.node,
+              t.memberExpression(
+                t.thisExpression(),
+                t.identifier(paramNames[i])
+              )
+            ));
 
             const declaration = t.variableDeclaration('const', declarators);
-            path.get('body').unshiftContainer('body', declaration);
+            body.unshiftContainer('body', declaration);
 
             params.forEach(param => {
               param.remove();
