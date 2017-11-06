@@ -44,13 +44,13 @@ $ npm install --dev babel-plugin-react-render-parameters
 }
 ```
 
-The `render` method will be changed for classes with `Component` or `PureComponent` as their superclass by default. To change this, add the `superClass` option:
+The `render` method will be changed for classes with `Component` or `PureComponent` as their superclass by default. To change this, add the `superClasses` option:
 
 ```json
 {
   "plugins": [
     ["react-render-parameters", {
-      "superClass": ["Component", "MyBaseComponent"]
+      "superClasses": ["Component", "MyBaseComponent"]
     }]
   ]
 }
