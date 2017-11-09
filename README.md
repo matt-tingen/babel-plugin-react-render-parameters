@@ -1,4 +1,4 @@
-# babel-plugin-react-render-parameters
+# babel-plugin-transform-react-render-parameters
 
 Allow props and state as render() parameters, as in preact.
 
@@ -31,7 +31,7 @@ class Test extends Component {
 ## Installation
 
 ```sh
-$ npm install --dev babel-plugin-react-render-parameters
+$ npm install --dev babel-plugin-transform-react-render-parameters
 ```
 
 ## Usage
