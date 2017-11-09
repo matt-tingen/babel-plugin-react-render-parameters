@@ -40,7 +40,7 @@ $ npm install --dev babel-plugin-transform-react-render-parameters
 
 ```json
 {
-  "plugins": ["react-render-parameters"]
+  "plugins": ["transform-react-render-parameters"]
 }
 ```
 
@@ -49,7 +49,7 @@ The `render` method will be changed for classes with `Component` or `PureCompone
 ```json
 {
   "plugins": [
-    ["react-render-parameters", {
+    ["transform-react-render-parameters", {
       "superClasses": ["Component", "MyBaseComponent"]
     }]
   ]
