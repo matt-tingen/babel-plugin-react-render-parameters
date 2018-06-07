@@ -19,6 +19,21 @@ const variableExpression = (t, member) => {
     memberExpression;
 };
 
+const matchesSuperClass = (t, superClass, validClasses) => {
+  let identifier;
+
+  if (t.isIdentifier(superClass)) {
+    identifier = superClass;
+  } else if (
+    t.isMemberExpression(superClass) &&
+    t.isIdentifier(superClass.object, { name: 'React' })
+  ) {
+    identifier = superClass.property;
+  }
+
+  return identifier && validClasses.includes(identifier.name);
+}
+
 export default function({ types: t }) {
   return {
     visitor: {
@@ -31,7 +46,8 @@ export default function({ types: t }) {
 
             const opts = { ...defaults, ...state.opts };
             const cls = path.findParent(path => path.isClassDeclaration());
-            if (!opts.superClasses.includes(cls.node.superClass.name)) {
+
+            if (!matchesSuperClass(t, cls.node.superClass, opts.superClasses)) {
               return;
             }
 
